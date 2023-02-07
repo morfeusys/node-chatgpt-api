@@ -124,7 +124,7 @@ server.get('/conversation', async (request, reply) => {
     const body = {
         conversationId: request.query['conversationId'],
         parentMessageId: request.query['parentMessageId'],
-        stream: request.query['stream'] === 'true' || false,
+        stream: request.query['stream'] === 'true',
         message: request.query['message']
     }
 
