@@ -6,7 +6,7 @@ export default {
         modelOptions: {
             // The model is set to text-chat-davinci-002-20221122 by default, but you can override
             // it and any other parameters here
-            model: 'text-chat-davinci-002-20221122',
+            model: 'text-chat-davinci-002-20221122'
         },
         // (Optional) Set custom instructions instead of "You are ChatGPT...".
         // promptPrefix: 'You are Bob, a cowboy in Western times...',
@@ -15,15 +15,15 @@ export default {
         // (Optional) Set a custom name for ChatGPT
         // chatGptLabel: 'ChatGPT',
         // (Optional) Set to true to enable `console.debug()` logging
-        debug: false,
+        debug: true,
     },
     // Options for the Keyv cache, see https://www.npmjs.com/package/keyv.
     // This is used for storing conversations, and supports additional drivers (conversations are stored in memory by default)
     cacheOptions: {},
     // Options for the API server
     apiOptions: {
-        port: process.env.API_PORT || 3000,
-        host: process.env.API_HOST || 'localhost',
+        port: process.env.API_PORT || 8000,
+        host: process.env.API_HOST || '0.0.0.0',
         // (Optional) Set to true to enable `console.debug()` logging
         debug: false,
     },

@@ -260,7 +260,7 @@ export default class ChatGPTClient {
 
         const numTokens = this.getTokenCount(prompt);
         // Use up to 4097 tokens (prompt + response), but try to leave 1000 tokens for the response.
-        this.modelOptions.max_tokens = Math.min(4097 - numTokens, 1000);
+        this.modelOptions.max_tokens = Math.max(4097 - numTokens, 1000);
 
         return prompt;
     }

@@ -51,9 +51,7 @@ await server.register(cors, {
     origin: '*',
 });
 
-server.post('/conversation', async (request, reply) => {
-    const body = request.body || {};
-
+async function processRequest(body, reply) {
     const conversationId = body.conversationId ? body.conversationId.toString() : undefined;
 
     let onProgress;
@@ -120,6 +118,22 @@ server.post('/conversation', async (request, reply) => {
             reply.code(code).send({ error: message });
         }
     }
+}
+
+server.get('/conversation', async (request, reply) => {
+    const body = {
+        conversationId: request.query['conversationId'],
+        parentMessageId: request.query['parentMessageId'],
+        stream: request.query['stream'] === 'true' || false,
+        message: request.query['message']
+    }
+
+    await processRequest(body, reply)
+})
+
+server.post('/conversation', async (request, reply) => {
+    const body = request.body || {};
+    await processRequest(body, reply)
 });
 
 server.listen({
